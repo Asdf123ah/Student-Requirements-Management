@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login/Register</title>
+        <link rel="stylesheet" href="../CSS/login.css">
+    </head>
+    <body>
+        <div class="container login-container" id="loginContainer">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="email" id="loginEmail" name="loginEmail" placeholder="Email">
+                <input type="password" id="loginPassword" name="loginPassword" placeholder="Password">
+                <p><a class="p-text" href="forgotpassword.html">Forgot password?</a></p>
+                <button type="submit">Login</button>
+                <hr>
+                <div class="toggle-button" id="toggleToSignup">Don’t have an account? <span>Signup</span></div>
+            </form>
+        </div>
+
+        <div class="container signup-container" id="signupContainer" style="display: none;">
+            <h2>Signup</h2>
+            <form id="signupForm">
+                <div class="name-fields">
+                    <input type="text" id="signupFirstName" name="signupFirstName" placeholder="First Name">
+                    <input type="text" id="signupLastName" name="signupLastName" placeholder="Last Name">
+                </div>
+                <div class="birthdate-fields">
+                    <select id="signupMonth" name="signupMonth">
+                        <option value="">Month</option>
+                        <option value="01">Jan</option>
+                        <option value="02">Feb</option>
+                        <option value="03">Mar</option>
+                        <option value="04">Apr</option>
+                        <option value="05">May</option>
+                        <option value="06">Jun</option>
+                        <option value="07">Jul</option>
+                        <option value="08">Aug</option>
+                        <option value="09">Sep</option>
+                        <option value="10">Oct</option>
+                        <option value="11">Nov</option>
+                        <option value="12">Dec</option>
+                    </select>
+                    <select id="signupDay" name="signupDay">
+                        <option value="">Day</option>
+                        <!-- Populate days 1 through 31 -->
+                        <script>
+                            for (let i = 1; i <= 31; i++) {
+                                document.write('<option value="' + (i < 10 ? '0' + i : i) + '">' + i + '</option>');
+                            }
+                        </script>
+                    </select>
+                    <select id="signupYear" name="signupYear">
+                        <option value="">Year</option>
+                        <!-- Populate years from 1900 to the current year -->
+                        <script>
+                            const currentYear = new Date().getFullYear();
+                            for (let i = currentYear; i >= 1900; i--) {
+                                document.write('<option value="' + i + '">' + i + '</option>');
+                            }
+                        </script>
+                    </select>
+                </div>                
+                <input type="text" id="signupStudentID" name="signupStudentID" placeholder="Student ID">
+                <input type="email" id="signupEmail" name="signupEmail" placeholder="Email">
+                <input type="password" id="signupPassword" name="signupPassword" placeholder="Password">
+                <input type="password" id="signupConfirmPassword" name="signupConfirmPassword" placeholder="Confirm Password">
+                <button type="submit">Signup</button>
+                <hr>
+                <div class="toggle-button" id="toggleToLogin">Already have an account? <span>Login</span></div>
+            </form>
+        </div>
+
+        <script type="module" src="../JS/login.js"></script>
+        <script type="module" src="../JS/validation.js"></script>
+        <script type="module" src="../JS/toggleForms.js"></script>
+    </body>
+</html>

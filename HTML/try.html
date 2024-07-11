@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/try.css">
+    <title>Instructor Dashboard</title>
+    <style>
+    /* Modal styling */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+          <h1>Student Requirements Management</h1>
+      </header>
+      <nav class="sidebar" id="sidebar">
+          <ul>
+              <li><button class="hamburger" onclick="toggleSidebar()">☰</button></li>
+              <li><a href="#" id="home"><i class="fas fa-home"></i><span>Home</span></a></li>
+              <li><a href="#" id="primary"><i class="fas fa-book"></i><span>Primary</span></a></li>
+              <li><a href="#" id="secondary"><i class="fas fa-earth-asia"></i><span>Secondary</span></a></li>
+              <li><a href="#" id="teammember"><i class="fas fa-users"></i><span>Team Members</span></a></li>
+              <li><a href="#" id="about"><i class="fas fa-circle-info"></i><span>About</span></a></li>
+              <li><a href="#" id="logout"><i class="fas fa-circle-user"></i><span>Logout</span></a></li>
+          </ul>
+      </nav>
+      <main>
+        <h1>Instructor Dashboard</h1>
+        <div class="tabs">
+          <button class="tab-button" data-tab="stream">Stream</button>
+          <button class="tab-button" data-tab="classwork">Classwork</button>
+          <button class="tab-button" data-tab="people">People</button>
+          <button class="tab-button" data-tab="grades">Grades</button>
+        </div>
+  
+        <!-- Stream Tab -->
+        <div id="stream" class="tab-content">
+          <h2>Stream</h2>
+          <div id="stream-list">
+            <!-- Requirements will be dynamically added here -->
+          </div>
+        </div>
+  
+        <!-- Classwork Tab -->
+        <div id="classwork" class="tab-content" style="display:none;">
+          <h2>Classwork</h2>
+          <button id="create-requirement-btn">Create Requirement</button>
+          <div id="classwork-list">
+            <!-- Requirements will be dynamically added here -->
+          </div>
+        </div>
+  
+        <!-- People Tab -->
+        <div id="people" class="tab-content" style="display:none;">
+          <h2>People</h2>
+          <div>
+            <h3>Teachers</h3>
+            <ul id="teacher-list">
+              <!-- Teachers will be dynamically added here -->
+            </ul>
+            <input type="text" id="new-teacher" placeholder="Add new teacher">
+            <button id="add-teacher-button">Add Teacher</button>
+          </div>
+          <div>
+            <h3>Students</h3>
+            <ul id="student-list">
+              <!-- Students will be dynamically added here -->
+            </ul>
+            <input type="text" id="new-student" placeholder="Add new student">
+            <button id="add-student-button">Add Student</button>
+          </div>
+        </div>
+  
+        <!-- Grades Tab -->
+        <div id="grades" class="tab-content" style="display:none;">
+          <h2>Grades</h2>
+          <table id="grades-table">
+            <thead>
+              <tr>
+                <th>Student Name</th>
+                <!-- Requirement titles will be dynamically added here -->
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Grades will be dynamically added here -->
+            </tbody>
+          </table>
+        </div>
+      </main>
+  </div>
+
+
+
+    <!-- Create Requirement Modal -->
+    <div id="requirement-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <form id="requirement-form">
+          <label for="req-type">Type:</label>
+          <select id="req-type" name="req-type" required>
+            <option value="Activity">Activity</option>
+            <option value="Assignment">Assignment</option>
+            <option value="Quiz">Quiz</option>
+          </select>
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" required>
+          <label for="instructions">Instructions:</label>
+          <textarea id="instructions" name="instructions"></textarea>
+          <label for="who-to-send">Who to Send (Students):</label>
+          <select id="who-to-send" name="who-to-send" multiple required>
+            <option value="student1">Student 1</option>
+            <option value="student2">Student 2</option>
+            <option value="student3">Student 3</option>
+          </select>
+          <label for="points">Points:</label>
+          <input type="number" id="points" name="points" required>
+          <label for="due-date">Due Date:</label>
+          <input type="datetime-local" id="due-date" name="due-date" required>
+          <label for="topic">Topic:</label>
+          <input type="text" id="topic" name="topic" required>
+          <label>Collaborative Task:</label>
+          <input type="radio" id="individual" name="collaborative-task"
+            value="Individual" required>
+          <label for="individual">Individual</label>
+          <input type="radio" id="group" name="collaborative-task"
+            value="Group">
+          <label for="group">Group</label>
+          <label for="attachments">Attachments (Student Upload):</label>
+          <input type="file" id="attachments" name="attachments">
+          <button type="submit">Create Requirement</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="../JS/try.js"></script>
+  </body>
+</html>
